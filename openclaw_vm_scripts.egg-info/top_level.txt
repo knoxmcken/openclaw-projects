@@ -1,0 +1,4 @@
+cli
+create_vm
+delete_vm
+list_vms
