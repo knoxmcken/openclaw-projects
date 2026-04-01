@@ -33,7 +33,7 @@ dev = [
 
 [project.scripts]
 manage-openclaw = "cli:manage_openclaw"
-
+oc = "cli:manage_openclaw"
 [tool.setuptools]
 py-modules = ["cli", "create_vm", "delete_vm", "list_vms"]
 
