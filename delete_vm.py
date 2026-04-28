@@ -1,13 +1,15 @@
 import subprocess
 import sys
 import argparse
+from config import load_config, gcloud_exe
 
 def delete_vm(vm_name):
-    zone = "us-central1-a"
+    cfg = load_config()
+    zone = cfg["zone"]
     
     # Define the gcloud command
     command = [
-        "gcloud", "compute", "instances", "delete", vm_name,
+        gcloud_exe(), "compute", "instances", "delete", vm_name,
         "--zone=" + zone,
         "--quiet"
     ]

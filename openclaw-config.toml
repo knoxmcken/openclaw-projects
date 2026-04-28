@@ -1,0 +1,6 @@
+[vm]
+zone = "us-central1-a"
+machine_type = "e2-medium"
+disk_size = "10"
+service_account = "828463118397-compute@developer.gserviceaccount.com"
+project_id = "gcp-labs-01-350902"

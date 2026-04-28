@@ -39,6 +39,21 @@ After `pip install -e .`, two aliases are registered pointing to the same Click 
 
 Subcommands: `list`, `create <name>`, `delete <name>`
 
+## Configuration
+
+User-facing defaults live in `openclaw-config.toml` at the project root:
+
+```toml
+[vm]
+zone = "us-central1-a"
+machine_type = "e2-medium"
+disk_size = "10"
+service_account = "..."
+project_id = "..."
+```
+
+Edit this file to change zone, machine type, etc. without touching source code. `config.py` loads it via `load_config()` and falls back to hardcoded defaults if the file is absent. Python 3.8–3.10 requires `tomli` (installed automatically via `pip install -e .`); 3.11+ uses stdlib `tomllib`.
+
 ## Architecture
 
 **Dual implementation**: each operation (create, delete, list) has a Python module (`create_vm.py`, etc.) and a Bash script (`create_vm.sh`, etc.). The Python modules export a single function (e.g., `create_vm(name)`) that is imported by `cli.py`. The CLI layer (`cli.py`) is a thin Click wrapper over those functions — no logic lives there.

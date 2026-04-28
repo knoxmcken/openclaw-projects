@@ -1,12 +1,14 @@
 import subprocess
 import sys
+from config import load_config, gcloud_exe
 
 def list_vms():
-    zone = "us-central1-a"
+    cfg = load_config()
+    zone = cfg["zone"]
     
     # Define the gcloud command
     command = [
-        "gcloud", "compute", "instances", "list",
+        gcloud_exe(), "compute", "instances", "list",
         "--zones=" + zone,
         "--format=table(name,status,INTERNAL_IP,EXTERNAL_IP)"
     ]

@@ -12,7 +12,7 @@ def test_create_vm_success(mock_run):
     
     mock_run.assert_called_once()
     call_args = mock_run.call_args[0][0]
-    assert "gcloud" in call_args
+    assert call_args[0].startswith("gcloud")
     assert "compute" in call_args
     assert "instances" in call_args
     assert "create" in call_args
